@@ -1,1 +1,59 @@
+Reducing Product Defect Rate to Improve Yield and Customer Satisfaction:
 
+Industry Context:
+A global automotive parts manufacturing company is facing increased returns due to minor but frequent defects in brake pad assemblies. Reducing defect rates is critical for:
+1.Improving profit margins
+2.Enhancing brand reputation
+3.Meeting client quality contracts (e.g., OEM partnerships)
+
+Problem Statement:
+"Can we statistically model and predict defect probabilities in brake pad production, and determine if our new Quality Control (QC) process significantly reduces the probability of defective items per batc
+
+Why Binomial Distribution?
+1.Each unit (brake pad) either passes or fails QC — binary outcome
+2.Fixed number of trials (batch size)
+3.Constant probability of defect per unit
+4.Independent outcomes
+
+Step-by-Step Plan:
+1. Data Collection
+Collect real production batch data:
+Batch Size (e.g., 1000 units per batch)
+Number of defective units in each batch
+Timestamp and location (shift, machine, operator)
+
+2. Define Parameters
+n = number of units per batch (e.g., 1000)
+p = probability of defect (historical average)
+X = number of defective units (Binomial random variable)
+
+3. Binomial Model Construction Model:
+from scipy.stats import binom
+n = 1000  # batch size
+p = 0.015  # estimated defect rate from historical data
+
+# Probability of exactly 10 defective units
+binom.pmf(10, n, p)
+
+# Cumulative probability of 15 or fewer defects
+binom.cdf(15, n, p)
+
+4. Quality Control Comparison (A/B Test Style)
+Compare:
+Pre-QC Upgrade Batches vs Post-QC Upgrade Batches
+
+Hypothesis:
+H0: Defect rate is same
+H1: New process reduces defect rate
+Use binomial test or proportion Z-test.
+
+5. Threshold Alerts with Power BI
+Use Power BI to visualize:
+Defects per batch over time
+Batches exceeding defect threshold (e.g., >20 per 1000)
+Predictive alerts using binomial upper bound confidence
+
+6. Business Value Impact
+Reduce waste and warranty claims
+Improve customer trust and contracts
+Save cost on recalls
